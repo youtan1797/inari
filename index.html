@@ -1,102 +1,883 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Inari — The Sprout Returns</title>
-  <link rel="stylesheet" href="style.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inari | Returning to Earth</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700&family=Lora:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --sand: #E6D2AA;
+            --slate: #4A5C6A;
+            --lichen: #8E9B97;
+            --deep-green: #556B2F;
+            --light-gold: #FFD700;
+            --mountain-dark: #3A4A58;
+            --fox-orange: #D46F1E;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Lora', serif;
+            color: var(--slate);
+            background-color: #f9f6f0;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="%23E6D2AA" opacity="0.1"/><path d="M0,50 Q25,30 50,50 T100,50" fill="none" stroke="%234A5C6A" stroke-width="0.5" stroke-opacity="0.1"/></svg>');
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header Styles */
+        header {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
+            padding: 15px 0;
+            transition: all 0.3s ease;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            font-family: 'Noto Serif JP', serif;
+            font-weight: 700;
+            color: var(--slate);
+            text-decoration: none;
+            font-size: 1.8rem;
+        }
+        
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--fox-orange);
+            border-radius: 50%;
+            position: relative;
+            margin-right: 12px;
+        }
+        
+        .logo-icon::before {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: white;
+            top: 10px;
+            left: 10px;
+        }
+        
+        .logo-icon::after {
+            content: '';
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--slate);
+            top: 15px;
+            left: 15px;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav li {
+            margin-left: 30px;
+        }
+        
+        nav a {
+            text-decoration: none;
+            color: var(--slate);
+            font-weight: 500;
+            position: relative;
+            padding-bottom: 5px;
+            font-family: 'Noto Serif JP', serif;
+            transition: color 0.3s;
+        }
+        
+        nav a:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: var(--fox-orange);
+            transition: width 0.3s;
+        }
+        
+        nav a:hover {
+            color: var(--fox-orange);
+        }
+        
+        nav a:hover:after {
+            width: 100%;
+        }
+        
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(rgba(74, 92, 106, 0.4), rgba(74, 92, 106, 0.6)), url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" preserveAspectRatio="none"><path d="M0,800 Q300,500 600,600 T1200,400 L1200,800 L0,800 Z" fill="%234A5C6A" opacity="0.1"/></svg>');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .hero h1 {
+            font-family: 'Noto Serif JP', serif;
+            font-size: 4rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            line-height: 1.2;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+        
+        .hero p {
+            font-size: 1.4rem;
+            margin-bottom: 40px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .mountain-silhouette {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 30%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none"><path d="M0,120 Q300,40 600,80 T1200,20 L1200,120 L0,120 Z" fill="%233A4A58"/></svg>') bottom no-repeat;
+            background-size: 100% auto;
+        }
+        
+        /* Sections */
+        section {
+            padding: 100px 0;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+            position: relative;
+        }
+        
+        .section-header h2 {
+            font-family: 'Noto Serif JP', serif;
+            font-size: 2.5rem;
+            color: var(--slate);
+            margin-bottom: 20px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-header h2:after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 3px;
+            background: var(--fox-orange);
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .section-header p {
+            max-width: 700px;
+            margin: 20px auto 0;
+            color: var(--lichen);
+            font-size: 1.1rem;
+        }
+        
+        /* About Section */
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+        
+        .about-text {
+            flex: 1;
+        }
+        
+        .about-text p {
+            margin-bottom: 25px;
+            font-size: 1.1rem;
+        }
+        
+        .about-image {
+            flex: 1;
+            position: relative;
+            height: 400px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+            background: linear-gradient(45deg, var(--sand), var(--lichen));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .about-image::before {
+            content: '';
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            right: 20px;
+            bottom: 20px;
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            border-radius: 5px;
+            pointer-events: none;
+        }
+        
+        .moon-phase {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background: radial-gradient(circle at 30% 30%, var(--sand), var(--lichen) 70%);
+            position: relative;
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .moon-crater {
+            position: absolute;
+            background: rgba(0, 0, 0, 0.1);
+            border-radius: 50%;
+        }
+        
+        .crater-1 { width: 30px; height: 30px; top: 40px; left: 50px; }
+        .crater-2 { width: 20px; height: 20px; top: 80px; left: 100px; }
+        .crater-3 { width: 25px; height: 25px; top: 120px; left: 70px; }
+        
+        /* Promise Section */
+        .promise {
+            background: linear-gradient(to bottom, rgba(142, 155, 151, 0.05), rgba(142, 155, 151, 0.1));
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .promise::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 20px;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 20" preserveAspectRatio="none"><path d="M0,20 Q300,0 600,10 T1200,0 L1200,20 L0,20 Z" fill="%23E6D2AA" opacity="0.2"/></svg>') top no-repeat;
+            background-size: 100% auto;
+        }
+        
+        .journey-steps {
+            display: flex;
+            justify-content: space-between;
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+        }
+        
+        .journey-steps::before {
+            content: '';
+            position: absolute;
+            top: 50px;
+            left: 50px;
+            right: 50px;
+            height: 3px;
+            background: var(--sand);
+            z-index: 0;
+        }
+        
+        .step {
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            width: 250px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            position: relative;
+            z-index: 1;
+            transition: transform 0.3s;
+        }
+        
+        .step:hover {
+            transform: translateY(-10px);
+        }
+        
+        .step-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--sand);
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            color: var(--slate);
+        }
+        
+        .step h3 {
+            font-family: 'Noto Serif JP', serif;
+            margin-bottom: 15px;
+            color: var(--slate);
+        }
+        
+        /* Seed Returns Section */
+        .seed-stats {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .stat-card {
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            text-align: center;
+            width: 220px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            border-top: 4px solid var(--fox-orange);
+        }
+        
+        .stat-number {
+            font-family: 'Noto Serif JP', serif;
+            font-size: 3rem;
+            color: var(--slate);
+            margin: 10px 0;
+        }
+        
+        .stat-label {
+            color: var(--lichen);
+            font-size: 1.1rem;
+        }
+        
+        /* Contact Section */
+        .contact {
+            background: linear-gradient(to bottom, var(--sand), var(--lichen));
+            color: white;
+        }
+        
+        .contact-container {
+            display: flex;
+            gap: 50px;
+            align-items: center;
+        }
+        
+        .contact-info {
+            flex: 1;
+        }
+        
+        .contact-form {
+            flex: 1;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 10px;
+            padding: 40px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .contact-form h3 {
+            font-family: 'Noto Serif JP', serif;
+            margin-bottom: 25px;
+            text-align: center;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+        
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 5px;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            font-family: 'Lora', serif;
+            font-size: 1rem;
+        }
+        
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: rgba(255, 255, 255, 0.6);
+        }
+        
+        .contact-form button {
+            background: var(--fox-orange);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 5px;
+            font-family: 'Noto Serif JP', serif;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background 0.3s;
+            width: 100%;
+        }
+        
+        .contact-form button:hover {
+            background: #b35c15;
+        }
+        
+        .contact-info p {
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+        }
+        
+        .email-link {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 12px 25px;
+            border-radius: 5px;
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background 0.3s;
+        }
+        
+        .email-link:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+        
+        /* QR Section */
+        .qr-section {
+            text-align: center;
+            background: var(--slate);
+            color: white;
+            padding: 70px 0;
+        }
+        
+        .qr-container {
+            max-width: 500px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(5px);
+            padding: 40px;
+            border-radius: 10px;
+        }
+        
+        .qr-placeholder {
+            width: 200px;
+            height: 200px;
+            background: linear-gradient(45deg, var(--sand), var(--lichen));
+            margin: 20px auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 10px;
+        }
+        
+        .qr-placeholder i {
+            font-size: 60px;
+            color: rgba(255, 255, 255, 0.7);
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--mountain-dark);
+            color: rgba(255, 255, 255, 0.7);
+            padding: 60px 0 30px;
+            position: relative;
+        }
+        
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 40px;
+        }
+        
+        .footer-logo {
+            font-family: 'Noto Serif JP', serif;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: white;
+        }
+        
+        .footer-about {
+            width: 40%;
+        }
+        
+        .footer-links {
+            display: flex;
+            gap: 50px;
+        }
+        
+        .footer-links h4 {
+            color: white;
+            margin-bottom: 20px;
+            font-family: 'Noto Serif JP', serif;
+            font-size: 1.2rem;
+        }
+        
+        .footer-links ul {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: var(--fox-orange);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+        }
+        
+        .haiku {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            background: rgba(0, 0, 0, 0.2);
+            padding: 15px;
+            border-radius: 5px;
+            opacity: 0;
+            transition: opacity 0.3s;
+            font-family: 'Noto Serif JP', serif;
+            font-size: 0.9rem;
+            text-align: center;
+            line-height: 1.8;
+            width: 200px;
+        }
+        
+        footer:hover .haiku {
+            opacity: 1;
+        }
+        
+        /* Responsive */
+        @media (max-width: 900px) {
+            .about-content, .contact-container {
+                flex-direction: column;
+            }
+            
+            .journey-steps {
+                flex-direction: column;
+                align-items: center;
+                gap: 30px;
+            }
+            
+            .journey-steps::before {
+                display: none;
+            }
+            
+            .seed-stats {
+                flex-wrap: wrap;
+            }
+            
+            .footer-content {
+                flex-direction: column;
+                gap: 40px;
+            }
+            
+            .footer-about, .footer-links {
+                width: 100%;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
+            nav ul {
+                display: none;
+            }
+        }
+    </style>
 </head>
- <script>
-  function toggleMenu() {
-    const menu = document.getElementById('menuItems');
-    menu.classList.toggle('show');
-  }
-</script>
 <body>
-<div class="soft-nav">
-  <a href="#home">Home</a> • 
-  <a href="#poem">The Promise</a> • 
-  <a href="#seed">Seed Returns</a> • 
-  <a href="#contact">Whispers</a>
-</div>
-<header>
- <nav class="menu">
-  <div class="menu-toggle" onclick="toggleMenu()">⋮</div>
-  <ul class="menu-items" id="menuItems">
-    <li><a href="#poem">The Poem</a></li>
-    <li><a href="#about">About Inari</a></li>
-    <li><a href="#contact">Contact</a></li>
-  </ul>
-</nav>
-</header>
-  <div class="container">
-    <section id="about" class="about">
-  <h2>About Inari</h2>
-  <p>
-    Inari is more than a website—it's a promise to return what we borrowed from the Earth.  
-    A breath of alpine air from Leh, a seed of restoration, a myth reborn.  
-    Built by Mohd, this space honors the harmony between technology and healing soil.  
-    🌾
-  </p>
-</section>
-    <h1 class="sunrise">Inari</h1>
-    <p class="tagline">Where the return begins, and the earth breathes again 🌱</p>
-    <div class="poem fade-in" id="poem">
-      <p>The promise was made among Himalayan winds…</p>
-      <p>To bring back what was taken, one seed at a time.</p>
-          <p>Inari returns with joy—tomorrow.</p>
-    </div> <!-- end of .poem -->
-    <section id="contact" class="contact fade-in">
-      <h2>Send a Whisper</h2>
-      <p>If you’d like to connect, contribute a seed, or simply say hello—Inari is listening 🌬️</p>
-      <p>Email: <a href="mailto:chochonacho5@gmail.com">chochonacho5@gmail.com</a></p>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <a href="#" class="logo">
+                <div class="logo-icon"></div>
+                Inari
+            </a>
+            <nav>
+                <ul>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#promise">The Promise</a></li>
+                    <li><a href="#seed-returns">Seed Returns</a></li>
+                    <li><a href="#contact">Send a Whisper</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Where the return begins, and the earth breathes again</h1>
+            <p>The promise was made among Himalayan winds... To bring back what was taken, one seed at a time.</p>
+            <div class="mountain-silhouette"></div>
+        </div>
     </section>
-<section class="whisper fade-in" id="whisper">
-  <p>屏風に映る山</p>
-  <p>Pixel の庭に稲荷が歩く</p>
-  <p>君の手、光る</p>
-</section>
-<footer>
-  <p>Website by Mohd. Rooted in love and rewilding 🌾</p>
-  <div class="inari-seal fade-in">
-  <div class="seal-icon">🏔️</div>
-  <div class="seal-text">SCAN TO RETURN TO EARTH</div>
-  <div class="seal-glyph">𓆸</div>
-</div>
-</footer>
-<div class="qr-floating">
-  <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://youtan1797.github.io/inari/&logo=https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Green_leaf_icon.svg/1024px-Green_leaf_icon.svg.png" alt="QR Code to Inari">
-</div>
-<section class="impact fade-in" id="impact">
-  <h2>How Your Purchase Heals</h2>
-  <ol>
-    <li>You buy Inari sprouts</li>
-    <li>We save 5% profit</li>
-    <li>Monthly → <strong>Seed Guardians</strong> plant:
-      <ul>
-        <li>Leh’s vanishing apricot varieties</li>
-        <li>Sacred <em>Sulpha</em> grass (for soil binding)</li>
-      </ul>
-    </li>
-    <li>GPS-tag your tree → <em>Scan to visit virtually</em></li>
-  </ol>
-</section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="section-header">
+                <h2>About Inari</h2>
+                <p>More than a website—it's a promise to return what we borrowed from the Earth</p>
+            </div>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>Inari is a breath of alpine air from Leh, a seed of restoration, a myth reborn. Built by Mohd, this space honors the harmony between technology and healing soil.</p>
+                    <p>We believe in the sacred cycle of giving back. Every action, every seed planted is a step toward restoring balance to our precious Earth.</p>
+                    <p>Inari returns with joy—tomorrow, and every day after, as we work to rewild our world and honor the ancient wisdom of nature.</p>
+                </div>
+                <div class="about-image">
+                    <div class="moon-phase">
+                        <div class="moon-crater crater-1"></div>
+                        <div class="moon-crater crater-2"></div>
+                        <div class="moon-crater crater-3"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- The Promise Section -->
+    <section id="promise" class="promise">
+        <div class="container">
+            <div class="section-header">
+                <h2>The Promise</h2>
+                <p>Our sacred vow to return what we've borrowed from the Earth</p>
+            </div>
+            <div class="journey-steps">
+                <div class="step">
+                    <div class="step-icon">
+                        <i class="fas fa-seedling"></i>
+                    </div>
+                    <h3>Sow</h3>
+                    <p>Planting seeds with intention and reverence for the Earth's wisdom</p>
+                </div>
+                <div class="step">
+                    <div class="step-icon">
+                        <i class="fas fa-hand-holding-heart"></i>
+                    </div>
+                    <h3>Nurture</h3>
+                    <p>Cultivating with patience and respect for natural cycles</p>
+                </div>
+                <div class="step">
+                    <div class="step-icon">
+                        <i class="fas fa-recycle"></i>
+                    </div>
+                    <h3>Return</h3>
+                    <p>Giving back more than we take, completing the sacred circle</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seed Returns Section -->
+    <section id="seed-returns" class="seed-returns">
+        <div class="container">
+            <div class="section-header">
+                <h2>Seed Returns</h2>
+                <p>Join our movement to restore the Earth, one seed at a time</p>
+            </div>
+            <div class="seed-stats">
+                <div class="stat-card">
+                    <div class="stat-number">5,872</div>
+                    <div class="stat-label">Seeds Planted</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">42</div>
+                    <div class="stat-label">Native Species</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">18</div>
+                    <div class="stat-label">Communities</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="section-header">
+                <h2>Send a Whisper</h2>
+                <p>Connect, contribute a seed, or simply say hello—Inari is listening</p>
+            </div>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <p>If you'd like to join our movement, share your wisdom, or contribute to our rewilding efforts, please reach out. Every whisper carries the potential for change.</p>
+                    <a href="mailto:chochonacho5@gmail.com" class="email-link">
+                        chochonacho5@gmail.com
+                    </a>
+                    <p class="contact-note">We honor every message as a sacred seed of connection.</p>
+                </div>
+                <div class="contact-form">
+                    <h3>Whisper to Inari</h3>
+                    <form>
+                        <div class="form-group">
+                            <label for="name">Your Name</label>
+                            <input type="text" id="name" placeholder="Enter your name">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Your Email</label>
+                            <input type="email" id="email" placeholder="Enter your email">
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Your Whisper</label>
+                            <textarea id="message" rows="5" placeholder="What would you like to share?"></textarea>
+                        </div>
+                        <button type="submit">Send Whisper <i class="fas fa-paper-plane"></i></button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- QR Section -->
+    <section class="qr-section">
+        <div class="container">
+            <h2>Visit Inari Instantly</h2>
+            <p>Scan to return to the Earth</p>
+            <div class="qr-container">
+                <div class="qr-placeholder">
+                    <i class="fas fa-qrcode"></i>
+                </div>
+                <p>Point your camera at the QR code to visit our digital sanctuary</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-about">
+                    <div class="footer-logo">Inari</div>
+                    <p>Rooted in love and rewilding, Inari is a promise to the Earth. We honor the harmony between technology and healing soil, returning what we've borrowed one seed at a time.</p>
+                </div>
+                <div class="footer-links">
+                    <div>
+                        <h4>Journey</h4>
+                        <ul>
+                            <li><a href="#about">About</a></li>
+                            <li><a href="#promise">The Promise</a></li>
+                            <li><a href="#seed-returns">Seed Returns</a></li>
+                            <li><a href="#contact">Send a Whisper</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4>Connect</h4>
+                        <ul>
+                            <li><a href="#">Instagram</a></li>
+                            <li><a href="#">Community</a></li>
+                            <li><a href="#">Planting Events</a></li>
+                            <li><a href="#">Volunteer</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>Website by Mohd. Rooted in love and rewilding. &copy; 2025 Inari. All rights reserved.</p>
+            </div>
+            <div class="haiku">
+                Plastic shed like skin<br>
+                Seeds dream in frozen soil<br>
+                Inari returns
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Simple animation for the hero section
+        document.addEventListener('DOMContentLoaded', function() {
+            // Header scroll effect
+            window.addEventListener('scroll', function() {
+                const header = document.querySelector('header');
+                if (window.scrollY > 50) {
+                    header.style.padding = '10px 0';
+                    header.style.boxShadow = '0 2px 15px rgba(0, 0, 0, 0.1)';
+                } else {
+                    header.style.padding = '15px 0';
+                    header.style.boxShadow = '0 2px 15px rgba(0, 0, 0, 0.05)';
+                }
+            });
+            
+            // Smooth scrolling for navigation
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        window.scrollTo({
+                            top: target.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+            
+            // Form submission
+            const contactForm = document.querySelector('.contact-form form');
+            if (contactForm) {
+                contactForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    alert('Your whisper has been sent to the Earth. Thank you for connecting with Inari.');
+                    contactForm.reset();
+                });
+            }
+        });
+    </script>
 </body>
-  <script>
-  const faders = document.querySelectorAll('.fade-in');
-  const appearOptions = {
-    threshold: 0.15,
-  };
-  const appearOnScroll = new IntersectionObserver(function(entries, observer) {
-    entries.forEach(entry => {
-      if (!entry.isIntersecting) return;
-      entry.target.classList.add('visible');
-      observer.unobserve(entry.target);
-    });
-  }, appearOptions);
-  faders.forEach(fader => {
-    appearOnScroll.observe(fader);
-  });
-</script>
 </html>
- 
