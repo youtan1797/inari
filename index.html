@@ -45,25 +45,18 @@
       <p>If you’d like to connect, contribute a seed, or simply say hello—Inari is listening 🌬️</p>
       <p>Email: <a href="mailto:chochonacho5@gmail.com">chochonacho5@gmail.com</a></p>
     </section>
-<section class="qr">
-  <h2>Visit Inari Instantly</h2>
-  <img src="https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=https://youtan1797.github.io/inari/&logo=https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Green_leaf_icon.svg/1024px-Green_leaf_icon.svg.png" alt="QR Code to Inari site">
-  <p>Scan to return to the Earth 🌱</p>
-</section>
-
-  </div> <!-- END of .container -->
-
-  <footer>
-    <p>Website by Mohd. Rooted in love and rewilding 🌾</p>
-  </footer>
+<footer>
+  <p>Website by Mohd. Rooted in love and rewilding 🌾</p>
+</footer>
+<div class="qr-floating">
+  <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://youtan1797.github.io/inari/&logo=https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Green_leaf_icon.svg/1024px-Green_leaf_icon.svg.png" alt="QR Code to Inari">
+</div>
 </body>
   <script>
   const faders = document.querySelectorAll('.fade-in');
-
   const appearOptions = {
     threshold: 0.15,
   };
-
   const appearOnScroll = new IntersectionObserver(function(entries, observer) {
     entries.forEach(entry => {
       if (!entry.isIntersecting) return;
@@ -71,7 +64,6 @@
       observer.unobserve(entry.target);
     });
   }, appearOptions);
-
   faders.forEach(fader => {
     appearOnScroll.observe(fader);
   });
