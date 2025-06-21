@@ -1,0 +1,25 @@
+index.html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Inari — The Sprout Returns</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>Inari</h1>
+    <p class="tagline">Where the return begins, and the earth breathes again 🌱</p>
+    <div class="poem">
+      <p>The promise was made among Himalayan winds…</p>
+      <p>To bring back what was taken, one seed at a time.</p>
+      <p>Through Leh's whispers and soil’s sorrow,</p>
+      <p>Inari returns with joy—tomorrow.</p>
+    </div>
+    <footer>
+      <p>Website by Mohd. Rooted in love and rewilding 🌾</p>
+    </footer>
+  </div>
+</body>
+</html>
