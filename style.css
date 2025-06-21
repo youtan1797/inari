@@ -169,3 +169,22 @@ footer {
   width: 100%;
   border-radius: 6px;
 }
+.soft-nav {
+  text-align: center;
+  margin-top: 1.5rem;
+  font-size: 0.95rem;
+  font-family: 'Georgia', serif;
+  color: #a6f4c5;
+}
+
+.soft-nav a {
+  color: #c7ffb3;
+  text-decoration: none;
+  margin: 0 0.6rem;
+  transition: color 0.3s ease;
+}
+
+.soft-nav a:hover {
+  color: #f5ffdf;
+  text-decoration: underline;
+}
