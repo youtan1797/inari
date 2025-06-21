@@ -9,9 +9,9 @@
  <script>
   function toggleMenu() {
     const menu = document.getElementById('menuItems');
-    menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
+    menu.classList.toggle('show');
   }
-</script> 
+</script>
 <body>
 <header>
  <nav class="menu">
