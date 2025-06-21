@@ -101,3 +101,40 @@ footer {
     opacity: 0.7;
   }
 }
+.menu {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  z-index: 1000;
+}
+
+.menu-toggle {
+  font-size: 1.8rem;
+  cursor: pointer;
+  color: #c7ffb3;
+  user-select: none;
+}
+
+.menu-items {
+  display: none;
+  list-style: none;
+  background-color: rgba(0, 0, 0, 0.85);
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  margin-top: 0.5rem;
+}
+
+.menu-items li {
+  margin: 0.4rem 0;
+}
+
+.menu-items li a {
+  text-decoration: none;
+  color: #c7ffb3;
+  font-weight: bold;
+  font-size: 0.95rem;
+}
+
+.menu-items li a:hover {
+  color: #98e8e0;
+}
