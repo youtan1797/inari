@@ -188,3 +188,67 @@ footer {
   color: #f5ffdf;
   text-decoration: underline;
 }
+.impact {
+  margin: 3rem auto;
+  max-width: 600px;
+  background-color: rgba(255, 255, 255, 0.04);
+  padding: 2rem;
+  border-radius: 12px;
+  text-align: left;
+  color: #dfffe7;
+}
+
+.impact h2 {
+  color: #c7ffb3;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.impact ol {
+  padding-left: 1.5rem;
+}
+
+.impact li {
+  margin-bottom: 1rem;
+  line-height: 1.5;
+}
+
+.impact ul {
+  margin-top: 0.5rem;
+  padding-left: 1.2rem;
+  list-style-type: circle;
+}
+.inari-seal {
+  text-align: center;
+  margin-top: 3rem;
+  font-family: 'Georgia', serif;
+  color: #a6f4c5;
+  letter-spacing: 1px;
+  line-height: 1.6;
+  opacity: 0.8;
+}
+
+.seal-icon {
+  font-size: 1.5rem;
+}
+
+.seal-text {
+  font-size: 0.95rem;
+  font-weight: bold;
+  color: #dfffe7;
+}
+
+.seal-glyph {
+  font-size: 1.4rem;
+  margin-top: 0.3rem;
+}
+.whisper {
+  font-family: "Georgia", serif;
+  font-style: italic;
+  color: #c7ffb3;
+  text-align: center;
+  margin: 4rem auto;
+  font-size: 1.1rem;
+  line-height: 1.8;
+  max-width: 600px;
+}
