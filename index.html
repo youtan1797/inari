@@ -6,15 +6,22 @@
   <title>Inari — The Sprout Returns</title>
   <link rel="stylesheet" href="style.css" />
 </head>
+ <script>
+  function toggleMenu() {
+    const menu = document.getElementById('menuItems');
+    menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
+  }
+</script> 
 <body>
 <header>
-  <nav>
-    <ul class="navbar">
-      <li><a href="#poem">The Poem</a></li>
-      <li><a href="#about">About Inari</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-  </nav>
+ <nav class="menu">
+  <div class="menu-toggle" onclick="toggleMenu()">⋮</div>
+  <ul class="menu-items" id="menuItems">
+    <li><a href="#poem">The Poem</a></li>
+    <li><a href="#about">About Inari</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
 </header>
   <div class="container">
     <section id="about" class="about">
