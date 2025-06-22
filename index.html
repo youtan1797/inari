@@ -163,5 +163,16 @@
   <div class="qr-floating">
   <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://youtan1797.github.io/inari/" alt="QR Code to Inari site">
 </div>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const toggleBtn = document.querySelector('.open-volunteer');
+    const box = document.querySelector('.volunteer-box');
+
+    toggleBtn.addEventListener('click', function(e) {
+      e.preventDefault();
+      box.classList.toggle('hidden');
+    });
+  });
+</script>
 </body>
 </html>
